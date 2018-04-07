@@ -2,7 +2,7 @@ pipeline {
     agent {
         docker {
             image 'node:6-alpine' 
-            args '-p 3000:3000'
+            args '-p 0.0.0.0:3000:3000'
         }
     }
     //NOTE: use pypline command to set env
