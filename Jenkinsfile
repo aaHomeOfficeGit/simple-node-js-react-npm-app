@@ -11,7 +11,8 @@ pipeline {
                 //sh 'npm install'
 		sh 'uname -a'
 		sh 'pwd'
-		sh 'ls -al' 
+		sh 'touch created_within_docker_agent.txt'
+		sh 'ls -al /' 
             }
         }
     }
