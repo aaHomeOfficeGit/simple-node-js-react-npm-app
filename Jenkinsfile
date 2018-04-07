@@ -2,9 +2,15 @@ pipeline {
     agent {
         docker {
             image 'node:6-alpine' 
-            args '-p 3000:3000 -e npm_config_cache=/var/lib/jenkins/workspace/simple-node-js-react-npm-app/.npm' 
-            //NOTE: the location of the npm cache needs to be changed because otherwise it tries to put it into the root dir	    
+            args '-p 3000:3000' 	    
         }
+    }
+    //NOTE: use pypline command to set env
+    environment { 
+       //the location of the npm cache needs to be changed because otherwise it tries to put it into the root dir
+       npm_config_cache = '/var/lib/jenkins/workspace/simple-node-js-react-npm-app/.npm' 
+       //CI stands for cont integration and if set then the test run of node will not ask for user input.. that would hang up the pipeline
+       CI = 'true'
     }
     stages {
         stage('Build') { 
